@@ -5,10 +5,11 @@ import (
 	"fmt"
 	"os"
 
-	git "../../models"
 	"github.com/google/go-github/github"
 	"golang.org/x/oauth2"
 )
+
+var client github.Client
 
 //InitGit connects to github
 func InitGit() {
@@ -20,23 +21,28 @@ func InitGit() {
 	)
 	tc := oauth2.NewClient(ctx, ts)
 	// get go-github client
-	client := github.NewClient(tc)
+	client = *github.NewClient(tc)
 
-	repo, _, err := client.Repositories.Get(ctx, "homesnz", "homes-web")
+	lo := github.ListOptions{
+		Page:    1,
+		PerPage: 1,
+	}
+	opt := &github.PullRequestListOptions{
+		State:       "open",
+		ListOptions: lo,
+	}
+
+	repo, response, err := client.PullRequests.List(ctx, "homesnz", "homes-web", opt)
+
+	fmt.Println("REsponse is", response)
+	fmt.Println("REsponse is", repo)
 
 	if err != nil {
 		fmt.Printf("Problem in getting repository information %v\n", err)
 		os.Exit(1)
 	}
+}
 
-	pack := &git.Package{
-		FullName:    *repo.FullName,
-		Description: *repo.Description,
-		ForksCount:  *repo.ForksCount,
-		StarsCount:  *repo.StargazersCount,
-	}
+func GetPullRequests() {
 
-	fmt.Printf("%+v\n", pack)
-
-	fmt.Print("Init git")
 }
