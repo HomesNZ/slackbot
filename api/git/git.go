@@ -53,15 +53,9 @@ func InitGit() {
 			Created: req.GetCreatedAt(),
 			URL:     req.GetURL(),
 		}
-		// fmt.Println("Simple object is simple", s)
 		formatted := FormatPR(s)
 		fmt.Println("Simple PR:", formatted)
 		fmt.Println("Simple PR:", s)
-
-		// fmt.Println("request is", req.GetTitle())
-		// fmt.Println("request is", req.GetCreatedAt())
-		// fmt.Println("request is", req.GetURL())
-		// fmt.Println("request is", req.GetURL())
 	}
 
 	if err != nil {
