@@ -1,7 +1,10 @@
 package handlers
 
+import "../api/git"
+
 //HandleMessage is the handler for a Real Time Slack message Struct
 func HandleMessage(s string) string {
-  // fmt.Print("RMr)
-  return "Hey"
+	return git.GetPullRequestData()
+
+	// return "Hey"
 }
