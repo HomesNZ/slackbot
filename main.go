@@ -1,11 +1,9 @@
 package main
 
 import (
-	git "./api/git"
-	slack "./api/slack"
+	git "github.com/jimsrush/slackbot/api/git"
+	slack "github.com/jimsrush/slackbot/api/slack"
 )
-
-// "github.com/jimsrush/slackbot/handlers"
 
 func main() {
 	git.InitGit()

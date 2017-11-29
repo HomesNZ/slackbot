@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	handlers "../../handlers"
+	handlers "github.com/jimsrush/slackbot/handlers"
 
 	"github.com/nlopes/slack"
 )
