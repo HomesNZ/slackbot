@@ -13,13 +13,6 @@ var client github.Client
 var repos []*github.Repository
 var ctx context.Context
 
-const pullTemplate = `
-{{.Title}}
-{{.Created}}
-{{.URL}}
-{{.Days}} days old
-`
-
 //InitGit connects to github
 func InitGit() {
 	token := os.Getenv("GIT_TOKEN")

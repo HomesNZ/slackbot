@@ -10,6 +10,13 @@ import (
 	git "github.com/jimsrush/slackbot/models/git"
 )
 
+const pullTemplate = `
+{{.Title}}
+{{.Created}}
+{{.URL}}
+{{.Days}} days old
+`
+
 var opt = &github.PullRequestListOptions{
 	State:       "open",
 	ListOptions: github.ListOptions{},
